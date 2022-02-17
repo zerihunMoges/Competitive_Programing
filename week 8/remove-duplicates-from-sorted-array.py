@@ -4,10 +4,11 @@ class Solution:
         i = 1
         while i < len(nums):
             if nums[j] == nums[i]:
-                nums.pop(i)
-                i-=1
+                i+=1
             else:
+                nums[j+1], nums[i] = nums[i],nums[j+1]
+                i+=1
                 j+=1
-            i+=1
             
-        return len(nums)
+            
+        return j+1
