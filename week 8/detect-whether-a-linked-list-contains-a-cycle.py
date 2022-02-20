@@ -1,4 +1,4 @@
-#!/bin/python3
+!/bin/python3
 
 import math
 import os
@@ -40,6 +40,27 @@ def print_singly_linked_list(node, sep, fptr):
 
 #
 # For your reference:
+#
+# SinglyLinkedListNode:
+#     int data
+#     SinglyLinkedListNode next
+#
+#
+def has_cycle(head):
+    
+    front = head
+    rear = head
+    while front and front.next != None:
+        front = front.next.next
+        rear = rear.next
+        if front == rear:
+            return 1
+        
+        
+    return 0
+
+    
+if __name__ == '__main__':
 #
 # SinglyLinkedListNode:
 #     int data
