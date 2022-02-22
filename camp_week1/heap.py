@@ -72,7 +72,7 @@ class Solution:
         
         for i in range(len(arr)-1, -1, -1):
             arr[i], arr[0] = arr[0],arr[i]
-            self.heapify(arr, i, 0)
+            self.down(arr, i, 0)
         
 
         arr.reverse()
