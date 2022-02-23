@@ -22,8 +22,7 @@ class Solution:
         head = merged
         
         
-        i = 0
-        while heap != []:
+        while heap:
             
             minn = heapq.heappop(heap)
             merged.val = minn.val
