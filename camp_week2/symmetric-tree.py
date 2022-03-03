@@ -16,23 +16,23 @@ class Solution:
             return True
         
         nodes = deque()
-        average = []
+        rows = []
         nodes.append([root,0])
         while nodes:
             node = nodes.popleft()
             level = node[1]
             n = node[0]
-            if level > len(average)-1:
-                average += [[]]*(level-len(average)+1)
-                if isPal(average[level-1]) == False:
+            if level > len(rows)-1:
+                rows += [[]]*(level-len(rows)+1)
+                if isPal(rows[level-1]) == False:
                     return False
 
             if n:
-                average[level] += [n.val]
+                rows[level] += [n.val]
             else: 
-                average[level] += [None]
+                rows[level] += [None]
             if n:
                 nodes.append([n.left,level+1])
                 nodes.append([n.right, level+1])
         
-        return isPal(average[-1])
+        return isPal(rows[-1])
