@@ -1,3 +1,19 @@
+
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        letters = {}
+        for i in range(len(s)):letters[s[i]] = i
+            
+        pos,lastpos,answer = 0,-1,[]
+        for i in range(len(s)):
+            pos = max(letters[s[i]], pos)
+            if i == pos:
+                answer.append(pos-lastpos)
+                lastpos = pos
+          
+        return answer
+    
+###########################################    
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         letters = {}
