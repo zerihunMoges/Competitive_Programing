@@ -11,15 +11,14 @@ class Solution:
         for i in range(numCourses):
             if i not in indegree:
                 courses.append(i)
-                
-        topsort = []   
+        count = 0 
         while courses:
             cur = courses.popleft()
-            topsort.append(cur)
+            count +=1
             for i in neig[cur]:
                 indegree[i] -= 1
                 if indegree[i] == 0:
                     courses.append(i)
                     
-        return len(topsort) == numCourses
+        return count == numCourses
         
