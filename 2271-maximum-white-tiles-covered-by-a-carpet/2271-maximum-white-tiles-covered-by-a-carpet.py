@@ -1,8 +1,5 @@
 class Solution:
     def maximumWhiteTiles(self, tiles: List[List[int]], carpetLen: int) -> int:
-        pass
-#         [[1,5],[10,11],[12,18],[20,25],[30,32]]
-                                
 
         tiles.sort()
         gaps = [0]*len(tiles)
