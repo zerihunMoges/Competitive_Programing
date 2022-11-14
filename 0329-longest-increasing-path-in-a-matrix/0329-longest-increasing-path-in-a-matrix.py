@@ -13,10 +13,10 @@ class Solution:
                 for row_dir, col_dir in directions:
                     new_row = i + row_dir
                     new_col = j + col_dir
-                
                     if self.inBound(new_row, new_col, matrix):
                         if matrix[new_row][new_col] < matrix[i][j]:
                             less_count[(i,j)] += 1
+                            
         nums = deque()           
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
