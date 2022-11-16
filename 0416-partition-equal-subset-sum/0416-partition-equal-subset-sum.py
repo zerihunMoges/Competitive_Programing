@@ -10,6 +10,6 @@ class Solution:
             if i == len(nums):
                 return False
             
-            return ans(i+1, s-nums[i]) or ans(i+1, s)
-        return ans(0,tot) if tot%2 ==0 else False
+            return ans(i+1, s+nums[i]) or ans(i+1, s)
+        return ans(0,0) if tot%2 ==0 else False
             
