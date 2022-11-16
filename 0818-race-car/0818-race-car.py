@@ -16,7 +16,7 @@ class Solution:
                 visited.add((a_pos, a_speed))
                 moves.append([a_pos, a_speed, move+1])
                 
-            if -target <= r_pos <= 2*target and (r_pos, r_speed) not in visited:
+            if -target/2 <= r_pos <= target + target/2 and (r_pos, r_speed) not in visited:
                 visited.add((r_pos, r_speed))
                 moves.append([r_pos, r_speed, move+1])
                 
