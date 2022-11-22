@@ -16,9 +16,6 @@ class Solution:
                         cur_best = max(cur_best, dp[i-1][j] + 1)
                   
                     dp[i][j] = cur_best
-                    
-        for row in dp:
-            print(row)
        
         return dp[-1][-1] == len(s3)
                 
