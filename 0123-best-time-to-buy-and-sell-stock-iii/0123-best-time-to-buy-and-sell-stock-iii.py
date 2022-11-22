@@ -22,6 +22,8 @@ class Solution:
         day = 0
         
         profit = self.findMaxProfit(haveStock, transactions, day, prices, memo)
+
+                 
         
         return profit
         
