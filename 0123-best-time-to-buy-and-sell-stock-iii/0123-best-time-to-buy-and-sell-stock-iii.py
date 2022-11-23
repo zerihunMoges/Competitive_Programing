@@ -5,21 +5,21 @@ class Solution:
         transactions = 2
         states = 2
         
-        memo = [[[0]*(transactions+1) for i in range(states)] for j in range(len(prices)+1)]
+        memo = [[0]*(transactions+1) for i in range(states)]
         
         
         
-        for day in reversed(range(len(memo)-1)):
-            for state in range(len(memo[day])):
-                for transaction in range(1, len(memo[day][state])):
+        for day in reversed(range(len(prices))):
+            for state in range(len(memo)):
+                for transaction in range(1, len(memo[state])):
                     if state == 1:
-                        memo[day][state][transaction] = max(prices[day]+memo[day+1][state-1][transaction-1], memo[day+1][state][transaction] )
+                        memo[state][transaction] = max(prices[day]+memo[state-1][transaction-1], memo[state][transaction] )
                         
                     else:
-                        memo[day][state][transaction] = max(-prices[day]+memo[day+1][state+1][transaction], memo[day+1][state][transaction] )
+                        memo[state][transaction] = max(-prices[day]+memo[state+1][transaction], memo[state][transaction] )
         
         
-        return max(memo[0][0])
+        return max(memo[0])
                         
        
         
