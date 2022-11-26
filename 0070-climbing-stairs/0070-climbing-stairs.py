@@ -2,11 +2,13 @@ class Solution:
     @lru_cache(maxsize=None)
     def climbStairs(self, n: int) -> int:
         
-        dp = [0]*(n+2)
-        dp[1] = 1
+        
+        prev, prev_prev = 1, 0
 
-        for i in range(2, len(dp)):
+        for i in range(n):
+            temp = prev
+            prev = prev + prev_prev
             
-            dp[i] = dp[i-1]+dp[i-2]
+            prev_prev = temp
        
-        return dp[-1]
+        return prev
