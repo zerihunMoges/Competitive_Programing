@@ -7,7 +7,7 @@ class Solution:
         order = sorted(nums)
         i = len(order)//2 -1 + len(order)%2
         j = len(order)-1
-        print(order)
+     
         for k in range(0,len(nums),2):
             
             nums[k] = order[i]
