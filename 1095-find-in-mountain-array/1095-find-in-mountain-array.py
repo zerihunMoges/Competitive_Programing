@@ -11,8 +11,6 @@ class Solution:
         
         
         while left <= right:
-            
-            
             mid = (left+right)//2
             
             east = mountain.get(mid+1)
@@ -30,8 +28,6 @@ class Solution:
     def findLeft(self, mountain, target, left, right):
 
         while left <= right:
-            
-            
             mid = (left+right)//2
             center = mountain.get(mid)
             
@@ -49,8 +45,6 @@ class Solution:
     def findRight(self, mountain, target, left, right):
         
         while left <= right:
-            
-            
             mid = (left+right)//2
             center = mountain.get(mid)
             
@@ -64,6 +58,7 @@ class Solution:
                 return mid
             
         return -1
+    
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         left = 1
         right = mountain_arr.length()-1
