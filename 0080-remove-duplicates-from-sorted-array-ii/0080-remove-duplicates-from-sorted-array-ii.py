@@ -1,22 +1,11 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         
-        heap = []
-        for num in nums:
-            heapq.heappush(heap, num)
+        left = 2
+        for i in range(2, len(nums)):
             
-        count = defaultdict(int)
-        for i in range(len(nums)):
-            while heap and count[heap[0]] >= 2:
-                heapq.heappop(heap)
+            if nums[left-2] != nums[i]:
+                nums[left] = nums[i]
+                left+=1
                 
-            if heap:   
-                n = heapq.heappop(heap)
-                count[n] += 1
-                nums[i] = n
-            else:
-                return i
-            
-        return len(nums)
-        
-            
+        return min(left, len(nums))
