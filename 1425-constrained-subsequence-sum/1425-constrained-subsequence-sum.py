@@ -7,6 +7,7 @@ class Solution:
             prev_max = 0
             if heap:
                 prev_max = max(prev_max, -heap[0][0])
+                
             heapq.heappush(heap, [-(nums[i]+prev_max), i])
             while heap and (i - heap[0][1] >= k or i == len(nums)-1):
                 tot, index = heapq.heappop(heap)
