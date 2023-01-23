@@ -41,7 +41,7 @@ class MajorityChecker:
                 
         return l
     def query(self, left: int, right: int, threshold: int) -> int:
-        for i in range(20):
+        for i in range(10):
             target = self.arr[random.randint(left, right)]
             start = self.findRight(left, self.indexes[target])
             end = self.findLeft(right, self.indexes[target])
