@@ -27,22 +27,26 @@ class Solution:
             diff.append([abs(costa-costb), i])
         size = len(costs)//2
         diff.sort(reverse=True)
-        citya = []
-        cityb = []
+        citya = 0
+        cityb = 0
+        tot = 0
         
         for i in range(len(diff)):
             dif, index = diff[i]
             
             if costs[index][0] < costs[index][1]:
-                if len(citya) < size:
-                    citya.append(costs[index][0])
+                if citya < size:
+                    tot += costs[index][0]
+                    citya += 1
                 else:
-                    cityb.append(costs[index][1])
-                    
+                    tot += costs[index][1]
+                    cityb+=1
             else:
-                if len(cityb) < size:
-                    cityb.append(costs[index][1])
+                if cityb < size:
+                    tot += costs[index][1]
+                    cityb+=1
                 else:
-                    citya.append(costs[index][0])
-        
-        return sum(citya)+sum(cityb)
+                    tot += costs[index][0]
+                    citya += 1
+                    
+        return tot
