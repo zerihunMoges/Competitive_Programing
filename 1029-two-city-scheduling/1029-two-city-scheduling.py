@@ -19,6 +19,30 @@ class Solution:
         return memo[(person, available)]
     
     def twoCitySchedCost(self, costs: List[List[int]]) -> int:
-        memo = defaultdict(int)
+      
         
-        return self.schedule(0, len(costs)//2, costs, memo)
+        diff = []
+        for i in range(len(costs)):
+            costa, costb = costs[i]
+            diff.append([abs(costa-costb), i])
+        size = len(costs)//2
+        diff.sort(reverse=True)
+        citya = []
+        cityb = []
+        
+        for i in range(len(diff)):
+            dif, index = diff[i]
+            
+            if costs[index][0] < costs[index][1]:
+                if len(citya) < size:
+                    citya.append(costs[index][0])
+                else:
+                    cityb.append(costs[index][1])
+                    
+            else:
+                if len(cityb) < size:
+                    cityb.append(costs[index][1])
+                else:
+                    citya.append(costs[index][0])
+        
+        return sum(citya)+sum(cityb)
