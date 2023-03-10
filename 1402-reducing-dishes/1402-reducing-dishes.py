@@ -5,7 +5,9 @@ class Solution:
             return 0
         if (index, time) in memo:
             return memo[(index, time)]
-        skip = self.findMaxS(time, index+1, satisfaction, memo)
+        skip = -float('inf')
+        if satisfaction[index] < 0:
+            skip = self.findMaxS(time, index+1, satisfaction, memo)
         make = time*satisfaction[index] + self.findMaxS(time+1, index+1, satisfaction, memo)
         
         memo[(index, time)] = max(skip, make)
