@@ -5,39 +5,28 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def findPathCount(self, cur, target):
+    def findPathCount(self, cur,cursum, target, sums):
         
         if not cur:
-            return [float('inf')], 0
+            return 0
         
-        left_sums, left_count = self.findPathCount(cur.left, target)
-        right_sums, right_count = self.findPathCount(cur.right, target)
-        target_count = left_count+right_count
-        
-        sums = left_sums + right_sums
-        
-        cur_sums = []
-        for num in sums:
-            
-            if num != float('inf'):
-                cur_sums.append(num+cur.val)
-            
-            if num+cur.val == target:
-                target_count += 1
-                
-        if cur.val == target:
-                target_count += 1
-        
-        cur_sums.append(cur.val)
-        
-        return cur_sums, target_count
-            
-                
-        
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        cursum += cur.val
         
         
-        sums, count = self.findPathCount(root, targetSum)
+        curcount = sums[cursum-target]
+        sums[cursum] += 1
+        left_count = self.findPathCount(cur.left,cursum,  target, sums)
+        right_count = self.findPathCount(cur.right,cursum, target, sums)
+        target_count = left_count+right_count+curcount
+        sums[cursum] -= 1
        
-        return count
+        return target_count
+    
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        sums = defaultdict(int)
         
+        sums[0] = 1
+    
+
+        
+        return self.findPathCount(root, 0, targetSum, sums)
