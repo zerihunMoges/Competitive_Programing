@@ -14,15 +14,15 @@ class Solution:
         @lru_cache(maxsize=None)
         def minSufficientTeam(sk, i):
             if sk == 2**(len(req_skills))-1:
-                return 0, []
+                return []
             if i >= len(people):
-                return float('inf'), []
+                return None
             
-            pick, pPicked = minSufficientTeam(sk|skills[i], i+1) 
-            skip, sPicked = minSufficientTeam(sk, i+1)
+            pick = minSufficientTeam(sk|skills[i], i+1) 
+            skip = minSufficientTeam(sk, i+1)
             
-            if pick < skip:
-                return 1+pick, [i] + pPicked
-            return skip, sPicked
+            if pick != None and (not skip  or len(pick) < len(skip)):
+                return pick + [i]
+            return skip
         
-        return minSufficientTeam(0, 0)[1]
+        return minSufficientTeam(0, 0)
