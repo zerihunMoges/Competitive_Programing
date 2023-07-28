@@ -2,7 +2,7 @@ class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         score = 0
         
-        @lru_cache()
+        @lru_cache(maxsize=None)
         def play(i,j, turn):
             nonlocal score
            
